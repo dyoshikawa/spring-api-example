@@ -45,7 +45,7 @@ class TasksController(
     /**
      * 更新
      */
-    @PutMapping
+    @PutMapping(path = ["{id}"])
     fun update(@PathVariable id: Long, @RequestBody task: Task): ResponseEntity<Map<String, String>> {
         task.id = id
         service.store(task)
