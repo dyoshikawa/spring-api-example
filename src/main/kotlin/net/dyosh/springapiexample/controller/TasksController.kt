@@ -43,6 +43,16 @@ class TasksController(
     }
 
     /**
+     * 更新
+     */
+    @PutMapping
+    fun update(@PathVariable id: Long, @RequestBody task: Task): ResponseEntity<Map<String, String>> {
+        task.id = id
+        service.store(task)
+        return ResponseEntity.ok(mapOf("message" to "success"))
+    }
+
+    /**
      * 削除
      */
     @DeleteMapping(path = ["{id}"])
